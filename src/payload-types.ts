@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     destinations: Destination;
+    'sky-events': SkyEvent;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,6 +81,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     destinations: DestinationsSelect<false> | DestinationsSelect<true>;
+    'sky-events': SkyEventsSelect<false> | SkyEventsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -214,6 +216,46 @@ export interface Destination {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sky-events".
+ */
+export interface SkyEvent {
+  id: number;
+  /**
+   * e.g. Perseid Meteor Shower, Total Solar Eclipse
+   */
+  name: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Start of the event or peak viewing period
+   */
+  startDate?: string | null;
+  /**
+   * End of the event or peak viewing period
+   */
+  endDate?: string | null;
+  /**
+   * Destinations where this event is visible or best viewed
+   */
+  destinations?: (number | Destination)[] | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -247,6 +289,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'destinations';
         value: number | Destination;
+      } | null)
+    | ({
+        relationTo: 'sky-events';
+        value: number | SkyEvent;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -346,6 +392,19 @@ export interface DestinationsSelect<T extends boolean = true> {
   latitude?: T;
   longitude?: T;
   featured?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sky-events_select".
+ */
+export interface SkyEventsSelect<T extends boolean = true> {
+  name?: T;
+  description?: T;
+  startDate?: T;
+  endDate?: T;
+  destinations?: T;
   updatedAt?: T;
   createdAt?: T;
 }
