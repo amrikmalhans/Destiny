@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     destinations: Destination;
     'sky-events': SkyEvent;
+    guides: Guide;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -82,6 +83,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     destinations: DestinationsSelect<false> | DestinationsSelect<true>;
     'sky-events': SkyEventsSelect<false> | SkyEventsSelect<true>;
+    guides: GuidesSelect<false> | GuidesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -256,6 +258,39 @@ export interface SkyEvent {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "guides".
+ */
+export interface Guide {
+  id: number;
+  title: string;
+  /**
+   * URL-friendly identifier (e.g. how-to-photograph-milky-way)
+   */
+  slug: string;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Destination this guide is about (e.g. gear for Mauna Kea)
+   */
+  relatedDestination?: (number | null) | Destination;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -293,6 +328,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'sky-events';
         value: number | SkyEvent;
+      } | null)
+    | ({
+        relationTo: 'guides';
+        value: number | Guide;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -405,6 +444,18 @@ export interface SkyEventsSelect<T extends boolean = true> {
   startDate?: T;
   endDate?: T;
   destinations?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "guides_select".
+ */
+export interface GuidesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  content?: T;
+  relatedDestination?: T;
   updatedAt?: T;
   createdAt?: T;
 }
