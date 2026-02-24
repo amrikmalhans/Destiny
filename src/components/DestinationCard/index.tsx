@@ -3,7 +3,8 @@ import Link from 'next/link'
 import { ArrowUpRight, Info } from 'lucide-react'
 
 import Card from '@/components/Card'
-import { extractPlainTextFromLexical } from '@/lib/extractPlainTextFromLexical'
+import { extractPlainTextFromLexical } from '@/lib/content'
+import styles from './DestinationCard.module.css'
 
 type DestinationCardProps = {
   destination: Destination
@@ -19,27 +20,27 @@ const DestinationCard = ({ destination }: DestinationCardProps) => {
     : null
 
   return (
-    <Card className="destination-card">
-      <div className="destination-card__media">
+    <Card className={styles.destinationCard}>
+      <div className={styles.media}>
         {heroImageUrl ? (
-          <img alt={heroImage?.alt || destination.name} className="destination-card__image" src={heroImageUrl} />
+          <img alt={heroImage?.alt || destination.name} className={styles.image} src={heroImageUrl} />
         ) : (
-          <div aria-hidden="true" className="destination-card__image destination-card__image--fallback" />
+          <div aria-hidden="true" className={`${styles.image} ${styles.imageFallback}`} />
         )}
-        <button aria-label={`More info about ${destination.name}`} className="destination-card__info" type="button">
+        <button aria-label={`More info about ${destination.name}`} className={styles.info} type="button">
           <Info size={20} />
         </button>
       </div>
 
-      <div className="destination-card__body">
-        <p className="destination-card__meta">
+      <div className={styles.body}>
+        <p className={styles.meta}>
           {location || 'Norway'}
           {lightPollutionLabel ? <span> · {lightPollutionLabel}</span> : null}
         </p>
-        <h3 className="destination-card__title">{destination.name}</h3>
-        <p className="destination-card__subtitle">Check hourly forecast</p>
-        {description ? <p className="destination-card__description">{description}</p> : null}
-        <Link className="destination-card__cta" href={`/destinations/${destination.slug}`}>
+        <h3 className={styles.title}>{destination.name}</h3>
+        <p className={styles.subtitle}>Check hourly forecast</p>
+        {description ? <p className={styles.description}>{description}</p> : null}
+        <Link className={styles.cta} href={`/destinations/${destination.slug}`}>
           Explore
           <ArrowUpRight size={18} />
         </Link>

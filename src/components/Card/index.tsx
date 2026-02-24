@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import styles from './Card.module.css'
 
 type CardProps = {
   children: ReactNode
@@ -6,7 +7,7 @@ type CardProps = {
 }
 
 const Card = ({ children, className }: CardProps) => {
-  const classes = className ? `card ${className}` : 'card'
+  const classes = className ? `${styles.root} ${className}` : styles.root
 
   return <article className={classes}>{children}</article>
 }
