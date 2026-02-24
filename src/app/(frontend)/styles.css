@@ -34,6 +34,44 @@ body {
   }
 }
 
+.site-shell {
+  min-height: 100%;
+}
+
+.site-nav {
+  border-bottom: 1px solid rgb(60, 60, 60);
+}
+
+.site-nav__inner {
+  width: min(1100px, 100% - 2rem);
+  margin: 0 auto;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-nav__brand {
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.site-nav__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.site-nav__links a {
+  text-decoration: none;
+}
+
 img {
   max-width: 100%;
   height: auto;
