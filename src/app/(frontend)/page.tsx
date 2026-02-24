@@ -3,6 +3,8 @@ import React from 'react'
 
 import config from '@/payload.config'
 import './styles.css'
+import Hero from '@/components/Hero'
+import DestinationCard from '@/components/DestinationCard'
 
 export default async function HomePage() {
   const payloadConfig = await config
@@ -14,17 +16,13 @@ export default async function HomePage() {
 
   return (
     <section className="home">
-      <div className="content">
-        <h1>Home</h1>
-      </div>
+      <Hero />
       <section className="destinations">
-        <ul>
+        <div className="destination-grid">
           {destinations.map((destination) => (
-            <li key={destination.id}>
-              <h2>{destination.name}</h2>
-            </li>
+            <DestinationCard destination={destination} key={destination.id} />
           ))}
-        </ul>
+        </div>
       </section>
     </section>
   )

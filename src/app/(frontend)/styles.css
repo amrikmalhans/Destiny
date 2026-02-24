@@ -299,10 +299,36 @@ svg {
 }
 
 .destinations {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
+  width: 100%;
   color: rgb(1000, 1000, 1000);
+}
+
+.destination-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid rgb(62, 62, 62);
+  border-radius: 12px;
+  background: rgb(12, 12, 12);
+  padding: 1rem;
+}
+
+.destination-card__title {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.destination-card__location {
+  margin: 0.5rem 0 0;
+  color: rgb(194, 194, 194);
+}
+
+.destination-card__meta {
+  margin: 0.5rem 0 0;
+  color: rgb(150, 150, 150);
 }
