@@ -306,29 +306,104 @@ svg {
 .destination-grid {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
 }
 
 .card {
-  border: 1px solid rgb(62, 62, 62);
-  border-radius: 12px;
-  background: rgb(12, 12, 12);
-  padding: 1rem;
+  border: 1px solid rgb(36, 36, 36);
+  border-radius: 18px;
+  background: rgb(9, 9, 9);
+  overflow: hidden;
 }
 
-.destination-card__title {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.2;
+.destination-card__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: rgb(22, 22, 22);
 }
 
-.destination-card__location {
-  margin: 0.5rem 0 0;
-  color: rgb(194, 194, 194);
+.destination-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.destination-card__image--fallback {
+  background: linear-gradient(140deg, #18324f 0%, #204a57 35%, #53b191 100%);
+}
+
+.destination-card__info {
+  position: absolute;
+  right: 0.9rem;
+  bottom: 0.9rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(7, 7, 7);
+  color: rgb(236, 236, 236);
+}
+
+.destination-card__body {
+  padding: 1.1rem 1.1rem 1.3rem;
 }
 
 .destination-card__meta {
-  margin: 0.5rem 0 0;
-  color: rgb(150, 150, 150);
+  margin: 0;
+  color: rgb(173, 173, 173);
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+.destination-card__title {
+  margin: 0.55rem 0 0;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  line-height: 1.08;
+  font-weight: 700;
+}
+
+.destination-card__subtitle {
+  margin: 0.65rem 0 0;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  font-weight: 600;
+  color: rgb(233, 233, 233);
+}
+
+.destination-card__description {
+  margin: 0.85rem 0 0;
+  color: rgb(210, 210, 210);
+  font-size: 1.04rem;
+  line-height: 1.5;
+}
+
+.destination-card__cta {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: rgb(238, 238, 238);
+  font-size: 1.05rem;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .destination-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .destination-card__title {
+    font-size: 1.85rem;
+  }
+}
+
+.destination-card__location {
+  margin: 0;
+  color: rgb(194, 194, 194);
 }
