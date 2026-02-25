@@ -3,8 +3,8 @@ import React from 'react'
 
 import config from '@/payload.config'
 import './styles.css'
-import Hero from '@/components/Hero'
 import DestinationCard from '@/components/DestinationCard'
+import Hero from '@/components/Hero'
 
 export default async function HomePage() {
   const payloadConfig = await config

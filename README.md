@@ -24,6 +24,19 @@ After you click the `Deploy` button above, you'll want to have standalone copy o
 
 That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
 
+#### SQLite (this template)
+
+This template uses SQLite. In `.env` set:
+
+- `DATABASE_URL=file:./payload.db`
+- `PAYLOAD_SECRET=<any long random string>`
+
+Automatic schema push is disabled to avoid the dev server blocking on migration prompts. After pulling or when you add new collections/fields, run migrations once:
+
+1. `pnpm payload migrate:create` — when prompted (e.g. "Is X table created or renamed?"), choose **create table** for new tables and press Enter.
+2. `pnpm payload migrate` — applies migrations.
+3. `pnpm dev` — dev server starts without prompts.
+
 #### Docker (Optional)
 
 If you prefer to use Docker for local development instead of a local MongoDB instance, the provided docker-compose.yml file can be used.
