@@ -6,6 +6,8 @@ import './styles.css'
 import DestinationCard from '@/components/DestinationCard'
 import Hero from '@/components/Hero'
 
+export const revalidate = 60
+
 export default async function HomePage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
