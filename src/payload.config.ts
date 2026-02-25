@@ -8,6 +8,7 @@ import sharp from 'sharp'
 import { Destinations } from './collections/Destinations'
 import { Guides } from './collections/Guides'
 import { Media } from './collections/Media'
+import { Pages } from './collections/Pages'
 import { SkyEvents } from './collections/SkyEvents'
 import { Users } from './collections/Users'
 
@@ -21,7 +22,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Destinations, SkyEvents, Guides],
+  collections: [Users, Media, Destinations, SkyEvents, Guides, Pages],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

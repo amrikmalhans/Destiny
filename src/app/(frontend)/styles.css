@@ -315,3 +315,58 @@ svg {
     grid-template-columns: 1fr;
   }
 }
+
+/* Block layout (Pages) */
+.block-hero {
+  position: relative;
+  padding: 3rem 1.5rem;
+}
+
+.block-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.block-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.block-hero__content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.block-hero__title {
+  margin: 0 0 0.5rem;
+}
+
+.block-hero__subtitle {
+  margin: 0 0 1rem;
+}
+
+.block-hero__cta {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+}
+
+.block-rich-text {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.block-related-destinations {
+  padding: 2rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.block-related-destinations__title {
+  margin: 0 0 1.5rem;
+}
