@@ -1,6 +1,4 @@
-# Payload CMS — 1-Page Interview Cheat Sheet
-
-**Use this for:** system design / solutioning whiteboards when the problem involves a headless CMS, content APIs, or admin + frontend architecture.
+# Payload CMS — 1-Page Documentation
 
 ---
 
